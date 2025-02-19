@@ -3,7 +3,6 @@
 ## TODOs
 
 ### Planned
-- TODO: setup s3 bucket to manage state file for terraform
 - TODO: setup kube-vip or metallb for load balancer service
 - TODO: buy a domain name to be used
 - TODO: use cloudflare as provider to validate certs
@@ -22,3 +21,5 @@
 - TODO: setup the lgtm stack for o11y
 - TODO: figure out a dashboard solution
 - TODO: add in GPU for AI
+- TODO: make k3s server nodes HA
+- TODO: make proxmox HA
