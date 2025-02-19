@@ -1,0 +1,2 @@
+ansible-core==2.18.2
+argcomplete==3.5.3
