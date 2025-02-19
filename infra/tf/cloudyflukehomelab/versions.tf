@@ -7,6 +7,11 @@ terraform {
       version = ">= 5.83"
     }
   }
+
+  backend "s3" {
+    bucket = "cloudyflukehomelab"
+    key    = "cloudyflukehomelab"
+  }
 }
 
 provider "aws" {}
