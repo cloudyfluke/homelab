@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket = "cloudyflukehomelab"
-    key    = "cloudyflukehomelab"
+    key    = "cloudyflukehomelab/terraform.state"
   }
 }
 

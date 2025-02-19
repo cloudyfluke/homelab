@@ -7,6 +7,11 @@ terraform {
       version = "0.72.0"
     }
   }
+
+  backend "s3" {
+    bucket = "cloudyflukehomelab"
+    key    = "infra/tf/proxmox/osimages/terraform.state"
+  }
 }
 
 provider "proxmox" {
