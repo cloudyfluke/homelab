@@ -14,7 +14,8 @@ locals {
     operating_system = {
       type = "l26"
     }
-    tags = ["terraform", "ubuntu", "k3s", "agent"]
+    gateway = "192.168.0.1"
+    tags    = ["terraform", "ubuntu", "k3s", "agent"]
   }
 
 
@@ -93,8 +94,8 @@ locals {
         cores = 6
       }
       memory = {
-        dedicated = 8192
-        floating  = 8192
+        dedicated = 6144
+        floating  = 6144
       }
       disk = {
         datastore_id = "local-lvm"
@@ -154,6 +155,7 @@ resource "proxmox_virtual_environment_vm" "agent" {
     ip_config {
       ipv4 {
         address = each.value.ip_config.ipv4.address
+        gateway = try(local.agent_defaults.gateway, each.value.ip_config.ipv4.gateway, null)
       }
     }
     user_account {

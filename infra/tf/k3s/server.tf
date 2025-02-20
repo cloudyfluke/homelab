@@ -15,7 +15,8 @@ locals {
     operating_system = {
       type = "l26"
     }
-    tags = ["terraform", "ubuntu", "k3s", "server"]
+    gateway = "192.168.0.1" # NOTE: Probably should be in the locals.tf file
+    tags    = ["terraform", "ubuntu", "k3s", "server"]
   }
 
   servers = {
@@ -33,8 +34,8 @@ locals {
         cores = 2
       }
       memory = {
-        dedicated = 2048
-        floating  = 2048 # set equal to dedicated to enable ballooning
+        dedicated = 4096
+        floating  = 4096 # set equal to dedicated to enable ballooning
       }
       disk = {
         datastore_id = "local-lvm"
@@ -45,6 +46,66 @@ locals {
       ip_config = {
         ipv4 = {
           address = "192.168.0.24/24"
+        }
+      }
+    }
+
+    server_1 = {
+      name        = "k3s-server-1"
+      vm_id       = 101
+      description = "k3s server"
+      node_name   = "pve-0"
+      startup = {
+        order      = "3"
+        up_delay   = "60"
+        down_delay = "60"
+      }
+      cpu = {
+        cores = 1
+      }
+      memory = {
+        dedicated = 2048
+        floating  = 2048 # set equal to dedicated to enable ballooning
+      }
+      disk = {
+        datastore_id = "local-lvm"
+        file_id      = "local:iso/noble-server-cloudimg-amd64.img"
+        interface    = "scsi0"
+        size         = 25
+      }
+      ip_config = {
+        ipv4 = {
+          address = "192.168.0.28/24"
+        }
+      }
+    }
+
+    server_2 = {
+      name        = "k3s-server-2"
+      vm_id       = 102
+      description = "k3s server"
+      node_name   = "pve-0"
+      startup = {
+        order      = "3"
+        up_delay   = "60"
+        down_delay = "60"
+      }
+      cpu = {
+        cores = 1
+      }
+      memory = {
+        dedicated = 2048
+        floating  = 2048 # set equal to dedicated to enable ballooning
+      }
+      disk = {
+        datastore_id = "local-lvm"
+        file_id      = "local:iso/noble-server-cloudimg-amd64.img"
+        interface    = "scsi0"
+        size         = 25
+      }
+      ip_config = {
+        ipv4 = {
+          address = "192.168.0.29/24"
         }
       }
     }
@@ -93,6 +154,7 @@ resource "proxmox_virtual_environment_vm" "server" {
     ip_config {
       ipv4 {
         address = each.value.ip_config.ipv4.address
+        gateway = try(local.server_defaults.gateway, each.value.ip_config.ipv4.gateway, null)
       }
     }
     user_account {
