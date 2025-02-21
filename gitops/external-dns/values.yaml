@@ -1,0 +1,9 @@
+provider: pihole
+policy: upsert-only
+txtOwnerId: "cloudyfluke"
+pihole:
+  server: http://pihole-cne-web.pihole.svc.cluster.local
+  secretName: pihole-admin
+
+serviceAccount:
+  create: true
