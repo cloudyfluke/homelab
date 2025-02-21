@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-export IP=192.168.0.24
-export VIP=192.168.0.100
-export K3S_VERSION=v1.31.5+k3s1
+IP=192.168.0.24
+VIP=192.168.0.100
+K3S_VERSION=v1.31.5+k3s1
 
 if [[ -f $HOME/.kube/config ]]; then
 	mv $HOME/.kube/config $HOME/.kube/config.old
