@@ -1,0 +1,87 @@
+replicaCount: 1
+maxSurge: 1
+maxUnavailable: 1
+
+image:
+  tag: ""
+
+serviceDns:
+  type: LoadBalancer
+  port: 53
+  externalTrafficPolicy: Cluster
+  loadBalancerIP: "192.168.0.101"
+
+serviceDhcp:
+  enabled: true
+  type: NodePort
+  externalTrafficPolicy: Cluster
+  loadBalancerIP: ""
+
+serviceWeb:
+  http:
+    enabled: true
+    port: 80
+  https:
+    enabled: true
+    port: 443
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  loadBalancerIP: "192.168.0.101"
+
+virtualHost: pi.hole
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  pathType: ImplementationSpecific
+  hosts:
+    # virtualHost (default value is pi.hole) will be appended to the hosts
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #     #- virtualHost (default value is pi.hole) will be appended to the hosts
+  #      - chart-example.local
+
+persistentVolumeClaim:
+  enabled: true
+
+  # -- Annotations for the `PersitentVolumeClaim`
+  annotations: {}
+
+  accessModes:
+    - ReadWriteOnce
+  size: "4096Mi"
+  storageClass: "longhorn"
+
+# -- Use an existing secret for the admin password.
+admin:
+  # -- If set to false admin password will be disabled, adminPassword specified above and the pre-existing secret (if specified) will be ignored.
+  enabled: true
+  # -- Specify an existing secret to use as admin password
+  existingSecret: "pihole-admin"
+  # -- Specify the key inside the secret to use
+  passwordKey: "password"
+  # -- Specify [annotations](docs/Values.md#admin.annotations) to be added to the secret
+  annotations:
+    # reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    # reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "external-dns"
+
+doh:
+  enabled: false
+  envVars:
+    DOH_UPSTREAM: "https://1.1.1.1/dns-query"
+
+adlists: {}
+
+whitelist: {}
+
+blacklist: {}
+
+regex: {}
+
+DNS1: "192.168.0.1"
+DNS2: "8.8.8.8"
