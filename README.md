@@ -3,12 +3,8 @@
 ## TODOs
 
 ### Planned
-- TODO: setup kube-vip or metallb for load balancer service
-- TODO: buy a domain name to be used
 - TODO: use cloudflare as provider to validate certs
-- TODO: setup pihole
 - TODO: setup a ingress controller via traefik
-- TODO: setup external dns
 - TODO: setup Argo CD to manage everything in k8s
 - TODO: setup Hashicorp Vault
 - TODO: setup GitHub Action Controller
