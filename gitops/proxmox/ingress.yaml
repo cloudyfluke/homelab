@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  name: proxmox
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: proxmox.cloudyfluke.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: proxmox
+            port:
+              number: 8006
+  tls:
+    - hosts:
+      - proxmox.cloudyfluke.com
+      secretName: cloudyfluke-com-tls

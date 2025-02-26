@@ -3,8 +3,6 @@
 ## TODOs
 
 ### Planned
-- TODO: use cloudflare as provider to validate certs
-- TODO: setup a ingress controller via traefik
 - TODO: setup Argo CD to manage everything in k8s
 - TODO: setup Hashicorp Vault
 - TODO: setup GitHub Action Controller
