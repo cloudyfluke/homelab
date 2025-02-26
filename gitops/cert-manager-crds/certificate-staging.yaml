@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cloudyfluke-com-staging
+spec:
+  secretName: cloudyfluke-com-tls-staging
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: cloudyfluke.com
+  dnsNames:
+  - "*.cloudyfluke.com"
+  - "cloudyfluke.com"
