@@ -61,7 +61,7 @@ locals {
         down_delay = "60"
       }
       cpu = {
-        cores = 1
+        cores = 2
       }
       memory = {
         dedicated = 2048
@@ -91,7 +91,7 @@ locals {
         down_delay = "60"
       }
       cpu = {
-        cores = 1
+        cores = 2
       }
       memory = {
         dedicated = 2048
