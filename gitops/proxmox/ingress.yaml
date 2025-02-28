@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/load-balancer: ip_hash
   name: proxmox
 spec:
   ingressClassName: nginx
