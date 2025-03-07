@@ -34,8 +34,8 @@ locals {
         cores = 2
       }
       memory = {
-        dedicated = 4096
-        floating  = 4096 # set equal to dedicated to enable ballooning
+        dedicated = 6144
+        floating  = 6144 # set equal to dedicated to enable ballooning
       }
       disk = {
         datastore_id = "local-lvm"
@@ -54,7 +54,7 @@ locals {
       name        = "k3s-server-1"
       vm_id       = 101
       description = "k3s server"
-      node_name   = "pve-0"
+      node_name   = "pve-1"
       startup = {
         order      = "3"
         up_delay   = "60"
@@ -64,8 +64,8 @@ locals {
         cores = 2
       }
       memory = {
-        dedicated = 2048
-        floating  = 2048 # set equal to dedicated to enable ballooning
+        dedicated = 6144
+        floating  = 6144 # set equal to dedicated to enable ballooning
       }
       disk = {
         datastore_id = "local-lvm"
@@ -84,7 +84,7 @@ locals {
       name        = "k3s-server-2"
       vm_id       = 102
       description = "k3s server"
-      node_name   = "pve-0"
+      node_name   = "pve-2"
       startup = {
         order      = "3"
         up_delay   = "60"
@@ -94,8 +94,8 @@ locals {
         cores = 2
       }
       memory = {
-        dedicated = 2048
-        floating  = 2048 # set equal to dedicated to enable ballooning
+        dedicated = 6144
+        floating  = 6144 # set equal to dedicated to enable ballooning
       }
       disk = {
         datastore_id = "local-lvm"

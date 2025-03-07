@@ -54,7 +54,37 @@ locals {
       name        = "k3s-agent-1"
       vm_id       = 111
       description = "k3s agent"
-      node_name   = "pve-0"
+      node_name   = "pve-1"
+      startup = {
+        order      = "3"
+        up_delay   = "60"
+        down_delay = "60"
+      }
+      cpu = {
+        cores = 6
+      }
+      memory = {
+        dedicated = 24576
+        floating  = 24576
+      }
+      disk = {
+        datastore_id = "local-lvm"
+        file_id      = "local:iso/noble-server-cloudimg-amd64.img"
+        interface    = "scsi0"
+        size         = 140
+      }
+      ip_config = {
+        ipv4 = {
+          address = "192.168.0.26/24"
+        }
+      }
+    }
+
+    agent_2 = {
+      name        = "k3s-agent-2"
+      vm_id       = 112
+      description = "k3s agent"
+      node_name   = "pve-2"
       startup = {
         order      = "3"
         up_delay   = "60"
@@ -71,37 +101,7 @@ locals {
         datastore_id = "local-lvm"
         file_id      = "local:iso/noble-server-cloudimg-amd64.img"
         interface    = "scsi0"
-        size         = 250
-      }
-      ip_config = {
-        ipv4 = {
-          address = "192.168.0.26/24"
-        }
-      }
-    }
-
-    agent_2 = {
-      name        = "k3s-agent-2"
-      vm_id       = 112
-      description = "k3s agent"
-      node_name   = "pve-0"
-      startup = {
-        order      = "3"
-        up_delay   = "60"
-        down_delay = "60"
-      }
-      cpu = {
-        cores = 6
-      }
-      memory = {
-        dedicated = 6144
-        floating  = 6144
-      }
-      disk = {
-        datastore_id = "local-lvm"
-        file_id      = "local:iso/noble-server-cloudimg-amd64.img"
-        interface    = "scsi0"
-        size         = 250
+        size         = 140
       }
       ip_config = {
         ipv4 = {
