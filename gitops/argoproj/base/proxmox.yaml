@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: proxmox
+  namespace: argocd
+spec:
+  destination:
+    namespace: proxmox
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: gitops/proxmox
+    repoURL: https://github.com/cloudyfluke/homelab
+    targetRevision: HEAD

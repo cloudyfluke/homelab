@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - base/argocd.yaml
+  - base/proxmox.yaml
+  - base/ingress-nginx.yaml
+  - base/external-dns.yaml
+  - base/cert-manager.yaml
+  - base/kube-vip.yaml
+  - base/longhorn.yaml
+  - base/pihole.yaml
+  - base/cert-manager-crds.yaml

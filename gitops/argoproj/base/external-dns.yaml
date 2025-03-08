@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+spec:
+  destination:
+    namespace: external-dns
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: external-dns
+      repoURL: registry-1.docker.io/bitnamicharts
+      targetRevision: "8.7.5"
+      helm:
+        valueFiles:
+          - $values/gitops/external-dns/values.yaml
+    - repoURL: https://github.com/cloudyfluke/homelab
+      targetRevision: HEAD
+      ref: values

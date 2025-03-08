@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  destination:
+    namespace: longhorn-system
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: longhorn
+      repoURL: https://charts.longhorn.io
+      targetRevision: "1.8.1"
+      helm:
+        valueFiles:
+          - $values/gitops/longhorn/values.yaml
+    - repoURL: https://github.com/cloudyfluke/homelab
+      targetRevision: HEAD
+      ref: values
