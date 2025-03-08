@@ -3,7 +3,6 @@
 ## TODOs
 
 ### Planned
-- TODO: setup Argo CD to manage everything in k8s
 - TODO: setup Hashicorp Vault
 - TODO: setup GitHub Action Controller
 - TODO: SSO with GitHub as the identity provider
