@@ -46,9 +46,7 @@ resource "proxmox_virtual_environment_vm" "truenas_scale" {
   }
 
   scsi_hardware = "virtio-scsi-single"
-  cdrom {
-    file_id = "local:iso/TrueNAS-SCALE-24.10.2.iso"
-  }
+  # NOTE: Need to use cdrom first to load the iso.
   disk {
     datastore_id = "local-lvm"
     file_format  = "raw"
@@ -60,8 +58,8 @@ resource "proxmox_virtual_environment_vm" "truenas_scale" {
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.0.40/24"
-        gateway = local.server_defaults.gateway
+        # NOTE: I have to use DHCP because TrueNas will not use the IP add given to it
+        address = "dhcp"
       }
     }
 
