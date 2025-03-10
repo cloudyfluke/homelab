@@ -13,3 +13,4 @@ resources:
   - base/longhorn.yaml
   - base/pihole.yaml
   - base/cert-manager-crds.yaml
+  - base/vault.yaml
