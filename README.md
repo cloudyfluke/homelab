@@ -3,13 +3,11 @@
 ## TODOs
 
 ### Planned
-- TODO: setup Hashicorp Vault
 - TODO: setup GitHub Action Controller
 - TODO: SSO with GitHub as the identity provider
 - TODO: setup TailScale
 
 ### Nice to Haves
-- TODO: setup TrueNas Scale
 - TODO: setup minio
 - TODO: setup the lgtm stack for o11y
 - TODO: figure out a dashboard solution
