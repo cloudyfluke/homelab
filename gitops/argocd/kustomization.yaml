@@ -8,6 +8,7 @@ resources:
   - base/argo-cd-ui-ingress.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v2.14.2/manifests/ha/install.yaml
   - base/cmp-plugin.yaml
+  - base/arogcd-repo-server-sa.yaml
 
 patches:
   - path: overlays/homelab/argocd-cmd-params-cm.yaml
