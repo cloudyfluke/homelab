@@ -7,10 +7,10 @@ resources:
   - base/certificate.yaml
   - base/argo-cd-ui-ingress.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v2.14.2/manifests/ha/install.yaml
+  - base/cmp-plugin.yaml
 
 patches:
   - path: overlays/homelab/argocd-cmd-params-cm.yaml
   - path: overlays/homelab/argocd-server-service.yaml
   - path: overlays/homelab/argocd-rbac-cm.yaml
-  - path: overlays/homelab/cmp-plugin.yaml
   - path: overlays/homelab/argocd-repo-server-deployment.yaml
