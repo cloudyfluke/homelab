@@ -12,4 +12,6 @@ patches:
   - path: overlays/homelab/argocd-cmd-params-cm.yaml
   - path: overlays/homelab/argocd-server-service.yaml
   - path: overlays/homelab/argocd-rbac-cm.yaml
+  - path: overlays/homelab/cmp-plugin.yaml
+  - path: overlays/homelab/argocd-repo-server-deployment.yaml
 
